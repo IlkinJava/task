@@ -1,0 +1,49 @@
+databaseChangeLog:
+- preConditions:
+  - runningAs:
+      username: postgres
+
+- changeSet:
+    id: 1
+    author: ilkin
+    changes:
+    - createTable:
+        tableName: persons
+        columns:
+        - column:
+            name: id
+            type: INTEGER
+            autoIncrement: true
+            constraints:
+              primaryKey: true
+              nullable: false
+        - column:
+            name: firstname
+            type: varchar(50)
+        - column:
+            name: lastname
+            type: varchar(50)
+            constraints:
+              nullable: false
+        - column:
+            name: created_at
+            type: TIMESTAMP
+- changeSet:
+    id: 2
+    author: ilkin
+    changes:
+    - addColumn:
+        tableName: persons
+        columns:
+        - column:
+            name: username
+            type: varchar(8)
+- changeSet:
+    id: dropColumn-ilkin
+    author: ilkin
+    changes:
+    - dropColumn:
+        columnName: username
+        schemaName: public
+        tableName: persons
+

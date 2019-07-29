@@ -1,0 +1,21 @@
+server:
+  port: 8388
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/parking
+    username: postgres
+    password: ilkin900
+  jpa:
+    database: postgresql
+    properties:
+      #      DISABLE JPA VERSION EXCEPTION
+      hibernate.temp.use_jdbc_metadata_defaults: false
+    show-sql: true
+#    generate-ddl: true
+    hibernate:
+      ddl-auto: update
+  liquibase:
+    change-log: classpath:db_scripts/liquibase-changelog.yml
